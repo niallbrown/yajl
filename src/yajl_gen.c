@@ -385,8 +385,7 @@ yajl_gen_val(yajl_gen g, yajl_val v)
             status = yajl_gen_val(g, YAJL_GET_ARRAY(v)->values[i]);
             if (status != yajl_gen_status_ok) return status;
         }
-        status = yajl_gen_array_close(g);
-        if (status != yajl_gen_status_ok) return status;
+        return yajl_gen_array_close(g);
     }
     else if (YAJL_IS_OBJECT(v)) {
         status = yajl_gen_map_open(g);
@@ -398,8 +397,7 @@ yajl_gen_val(yajl_gen g, yajl_val v)
             status = yajl_gen_val(g, YAJL_GET_OBJECT(v)->values[i]);
             if (status != yajl_gen_status_ok) return status;
         }
-        status = yajl_gen_map_close(g);
-        if (status != yajl_gen_status_ok) return status;
+      return yajl_gen_map_close(g);
     }
 
     /* if control reaches here then something must have gone terribly wrong */
